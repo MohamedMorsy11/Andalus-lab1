@@ -91,6 +91,11 @@
   .nav-link::after{ content:''; position:absolute; right:0; bottom:-4px; width:0; height:2px; background:#A31621; transition: width .3s ease; }
   .nav-link:hover::after{ width:100%; }
 
+  /* Category Filter Utilities */
+  .scrollbar-none::-webkit-scrollbar { display: none; }
+  .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+  .category-btn.active-cat { background-color: #A31621; color: white; border-color: #A31621; box-shadow: 0 10px 25px -5px rgba(163,22,33,0.3); }
+
   @media (prefers-reduced-motion: reduce){
     .reveal, .float-anim, .float-anim-slow, .wa-pulse, .badge-spin{ animation:none !important; transition:none !important; opacity:1 !important; transform:none !important; }
   }
@@ -98,7 +103,7 @@
 </head>
 <body class="antialiased overflow-x-hidden">
 
-<!-- SVG Definitive Path for Arch Masking (Allows perfect resizing) -->
+<!-- SVG Definitive Path for Arch Masking -->
 <svg class="absolute w-0 h-0" width="0" height="0">
   <defs>
     <clipPath id="heroArchPath" clipPathUnits="objectBoundingBox">
@@ -146,7 +151,6 @@
         معمل الأندلس يضمن لك نتائج دقيقة وسريعة تحت إشراف نخبة من الأطباء المتخصصين في معهد الأورام بطنطا، بأحدث التقنيات المعملية العالمية.
       </p>
       
-      <!-- الأزرار المحدثة مع تفعيل إرسال الروشتة -->
       <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
         <button onclick="openWhatsApp('مرحباً، أرغب في حجز موعد لعمل تحليل في معمل الأندلس.')" class="group flex items-center justify-center gap-3 bg-ruby hover:bg-ruby-dark text-white font-bold px-7 py-4 rounded-2xl shadow-card transition-all hover:-translate-y-1">
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.42 1.26 4.86L2 22l5.34-1.31a9.9 9.9 0 0 0 4.7 1.19h.01c5.5 0 9.96-4.46 9.96-9.96 0-2.66-1.04-5.16-2.92-7.04A9.9 9.9 0 0 0 12.04 2Z"/></svg>
@@ -176,21 +180,21 @@
       </div>
     </div>
 
-    <!-- قسم صورة القوس الأندلسي المطور بصورة طبية حقيقية احترافية -->
+    <!-- قسم صورة المختبر 4K المحلية داخل القوس الأندلسي -->
     <div class="order-1 lg:order-2 relative reveal reveal-delay-2">
       <div class="relative w-full max-w-md mx-auto aspect-[500/520]">
         
         <!-- إطار القوس الأندلسي الخارجي -->
         <div class="absolute inset-0 bg-gradient-to-b from-sapphire-light to-sapphire rounded-t-full p-[3px] shadow-card">
-          <div class="w-full h-full bg-ivory rounded-t-full overflow-hidden hero-arch-mask relative">
+          <div class="w-full h-full bg-slate2 rounded-t-full overflow-hidden hero-arch-mask relative">
             
-            <!-- الصورة الطبية الحقيقية المدمجة بفلتر ألوان متناسق مع الموقع -->
-            <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&q=80&w=600" 
-                 alt="التحاليل الطبية والباثولوجية بمعمل الأندلس" 
-                 class="w-full h-full object-cover contrast-115 brightness-95 mix-blend-multiply opacity-90 scale-105 hover:scale-100 transition-transform duration-700 ease-out" />
+            <!-- صورة محلية تضمن ظهورها دائماً وبأعلى جودة وسرعة استجابة -->
+            <img src="hero-lab.jpg" 
+                 alt="مختبر معمل الأندلس الحديث والأجهزة المتطورة" 
+                 class="w-full h-full object-cover contrast-105 brightness-100 scale-102 hover:scale-100 transition-transform duration-700 ease-out" />
             
-            <!-- طبقة تظليل ناعمة لعمق التصميم -->
-            <div class="absolute inset-0 bg-gradient-to-t from-sapphire-dark/60 via-transparent to-transparent"></div>
+            <!-- طبقة تظليل سفلي ناعمة وعميقة للتصميم -->
+            <div class="absolute inset-0 bg-gradient-to-t from-sapphire-dark/40 via-transparent to-transparent"></div>
           </div>
         </div>
 
@@ -200,7 +204,7 @@
           <path d="M50,510 C50,260 115,70 250,70 C385,70 450,260 450,510" fill="none" stroke="#C9A227" stroke-width="1" opacity="0.4"/>
         </svg>
 
-        <!-- البادجات الزجاجية العائمة (تفاعلية وحيوية) -->
+        <!-- البادجات الزجاجية العائمة -->
         <div class="float-anim absolute -right-3 top-10 bg-white/95 backdrop-blur-md rounded-2xl shadow-card px-4 py-3 flex items-center gap-3 border border-white/60 z-10">
           <div class="w-9 h-9 rounded-xl bg-ruby/10 flex items-center justify-center shrink-0">
             <svg class="w-5 h-5 text-ruby" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>
@@ -237,52 +241,75 @@
     <h2 class="text-3xl md:text-4xl font-black text-sapphire mt-3">ثقة تُبنى على الدقة والاهتمام</h2>
   </div>
 
-  <div class="grid md:grid-cols-4 gap-5">
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-5">
+    
     <!-- كارت 1: إشراف طبي متخصص -->
-    <div class="reveal order-1 md:col-span-2 bg-sapphire rounded-3xl p-8 flex flex-col justify-between relative overflow-hidden card-hover">
+    <div class="reveal order-1 md:col-span-4 bg-sapphire rounded-3xl p-8 flex flex-col justify-between relative overflow-hidden card-hover">
       <div class="absolute inset-0 zellige-bg-dark"></div>
       <div class="relative">
         <div class="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center mb-6">
           <svg class="w-7 h-7 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2a5 5 0 015 5v2a5 5 0 01-10 0V7a5 5 0 015-5z"/><path d="M5 12v1a7 7 0 0014 0v-1M12 20v2"/></svg>
         </div>
         <h3 class="text-white text-2xl font-extrabold mb-3">إشراف طبي متخصص</h3>
-        <p class="text-white/65 leading-relaxed">تحت إشراف د. ريم درويش، استشاري تحاليل الأنسجة والخلايا بمعهد الأورام بطنطا، لضمان تشخيص دقيق تعتمد عليه في قراراتك العلاجية.</p>
+        <p class="text-white/65 leading-relaxed max-w-3xl">تحت إشراف د. ريم درويش، استشاري تحاليل الأنسجة والخلايا بمعهد الأورام بطنطا، لضمان تشخيص دقيق تعتمد عليه في قراراتك العلاجية.</p>
       </div>
       <p class="relative text-gold text-sm font-bold mt-8">اطمئنان يبدأ من الخبرة</p>
     </div>
 
-    <!-- كارت 4: سحب من المنزل -->
-    <div class="reveal reveal-delay-3 order-2 md:order-none md:col-span-2 bg-gradient-to-l from-ruby to-ruby-light rounded-3xl p-7 flex items-center gap-5 shadow-soft card-hover">
-      <div class="w-14 h-14 rounded-2xl bg-white/15 flex items-center justify-center shrink-0">
-        <svg class="w-7 h-7 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>
-      </div>
-      <div>
-        <h3 class="font-extrabold text-white text-lg mb-1">سحب من المنزل</h3>
-        <p class="text-white/80 text-sm leading-relaxed">راحة تامة، فريقنا يصل إليك في أي وقت يناسبك دون عناء.</p>
+    <!-- كارت 2: سحب من المنزل (مغلق المساحات الفاضية + مزود بالقائمة المنسدلة للتحاليل) -->
+    <div class="reveal reveal-delay-1 order-2 md:col-span-4 bg-gradient-to-l from-ruby to-ruby-light rounded-3xl p-8 flex flex-col justify-between shadow-soft card-hover relative overflow-hidden">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div class="flex items-start gap-5">
+          <div class="w-14 h-14 rounded-2xl bg-white/15 flex items-center justify-center shrink-0">
+            <svg class="w-7 h-7 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>
+          </div>
+          <div>
+            <h3 class="font-extrabold text-white text-2xl mb-2">سحب من المنزل</h3>
+            <p class="text-white/80 text-sm leading-relaxed max-w-xl">راحة تامة، فريقنا المتخصص يصل إليك في أي وقت يناسبك دون عناء الزيارة.</p>
+          </div>
+        </div>
+        
+        <!-- قائمة تحديد نوع التحليل للسحب المنزلي -->
+        <div class="w-full md:w-72 shrink-0 z-10">
+          <label class="block text-white/90 text-xs font-bold mb-2">طلب سحب منزلي لتحليل محدد:</label>
+          <select id="homeDropList" class="w-full bg-white/10 text-white font-semibold text-sm p-3.5 rounded-xl border border-white/20 focus:outline-none focus:ring-2 focus:ring-gold appearance-none cursor-pointer">
+            <option value="" class="text-sapphire font-bold">-- اختر التحليل أو الخدمة --</option>
+            <option value="تحاليل باثولوجي وأنسجة" class="text-ink">تحاليل باثولوجي وأنسجة</option>
+            <option value="فحص شامل / باقة ميزان الصحة" class="text-ink">فحص شامل / باقة ميزان الصحة</option>
+            <option value="صورة دم كاملة CBC" class="text-ink">صورة دم كاملة CBC</option>
+            <option value="وظائف كبد وكلى" class="text-ink">وظائف كبد وكلى</option>
+            <option value="تحليل سكر (تراكمي / صائم وفاطر)" class="text-ink">تحليل سكر (تراكمي / صائم وفاطر)</option>
+            <option value="أخرى (إرسال الروشتة)" class="text-ink">أخرى (إرسال الروشتة للتحديد)</option>
+          </select>
+          <button onclick="requestHomeVisitWithService()" class="w-full mt-3 bg-gold hover:bg-gold-light text-sapphire-dark font-black text-xs py-3 rounded-xl transition-all shadow-md">
+            تأكيد الطلب عبر واتساب ↩
+          </button>
+        </div>
       </div>
     </div>
 
-    <!-- كارت 2: نتائج عالية الدقة -->
-    <div class="reveal reveal-delay-1 order-3 md:order-none bg-white rounded-3xl p-7 shadow-soft card-hover flex flex-col justify-between">
+    <!-- كارت 3: نتائج عالية الدقة -->
+    <div class="reveal reveal-delay-2 order-3 md:col-span-2 bg-white rounded-3xl p-7 shadow-soft card-hover flex flex-col justify-between">
+      <div class="w-12 h-12 rounded-xl bg-ruby/10 flex items-center justify-center mb-5">
+        <svg class="w-6 h-6 text-ruby" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M3 12c1.5-4 5-6 9-6s7.5 2 9 6c-1.5 4-5 6-9 6s-7.5-2-9-6z"/></svg>
+      </div>
       <div>
-        <div class="w-12 h-12 rounded-xl bg-ruby/10 flex items-center justify-center mb-5">
-          <svg class="w-6 h-6 text-ruby" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M3 12c1.5-4 5-6 9-6s7.5 2 9 6c-1.5 4-5 6-9 6s-7.5-2-9-6z"/></svg>
-        </div>
         <h3 class="font-extrabold text-sapphire text-lg mb-2">نتائج عالية الدقة</h3>
         <p class="text-sapphire/60 text-sm leading-relaxed">أحدث الأجهزة المعملية المعتمدة عالمياً لنتائج تعتمد عليها.</p>
       </div>
     </div>
 
-    <!-- كارت 3: استلام عبر الواتساب -->
-    <div class="reveal reveal-delay-2 order-4 md:order-none bg-white rounded-3xl p-7 shadow-soft card-hover flex flex-col justify-between">
+    <!-- كارت 4: استلام عبر الواتساب -->
+    <div class="reveal reveal-delay-3 order-4 md:col-span-2 bg-white rounded-3xl p-7 shadow-soft card-hover flex flex-col justify-between">
+      <div class="w-12 h-12 rounded-xl bg-sapphire/10 flex items-center justify-center mb-5">
+        <svg class="w-6 h-6 text-sapphire" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4l16 8-16 8V4z"/></svg>
+      </div>
       <div>
-        <div class="w-12 h-12 rounded-xl bg-sapphire/10 flex items-center justify-center mb-5">
-          <svg class="w-6 h-6 text-sapphire" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4l16 8-16 8V4z"/></svg>
-        </div>
         <h3 class="font-extrabold text-sapphire text-lg mb-2">استلام عبر الواتساب</h3>
         <p class="text-sapphire/60 text-sm leading-relaxed">تصلك نتيجتك بصيغة PDF مباشرة على واتسابك فور اعتمادها.</p>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -374,7 +401,7 @@
   </div>
 </section>
 
-<!-- ============ PACKAGES ============ -->
+<!-- ============ PACKAGES (مع شريط الأقسام الأفقي الجديد للموبايل) ============ -->
 <section id="packages" class="relative py-24 md:py-28 bg-slate2 overflow-hidden">
   <div class="absolute inset-0 zellige-bg opacity-30"></div>
   <div class="max-w-7xl mx-auto px-5 md:px-8 relative">
@@ -383,16 +410,38 @@
       <h2 class="text-3xl md:text-4xl font-black text-sapphire mt-3">باقاتنا التشخيصية المميزة</h2>
     </div>
 
-    <div class="flex justify-center mb-14 reveal">
+    <div class="flex justify-center mb-8 reveal">
       <span class="badge-spin-wrap relative inline-flex items-center gap-2 bg-ruby text-white text-sm font-extrabold px-6 py-3 rounded-full shadow-card">
         <svg class="w-4 h-4 badge-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l1.5 4.5H18l-3.6 2.8 1.4 4.5-3.8-2.7-3.8 2.7 1.4-4.5L6 6.5h4.5z"/></svg>
         خصم لفترة محدودة على جميع الباقات
       </span>
     </div>
 
+    <!-- شريط الأقسام المتجاوب (Horizontal Scroll للموبايل) -->
+    <div class="mb-10 reveal reveal-delay-1">
+      <p class="text-xs font-bold text-sapphire/60 mb-3 block md:hidden px-1">← اسحب لليمين واليسار لعرض الأقسام:</p>
+      <div class="flex items-center gap-2.5 overflow-x-auto pb-3 scrollbar-none md:justify-center whitespace-nowrap snap-x">
+        <button onclick="filterPackages('all')" class="category-btn active-cat snap-center text-sm font-bold px-5 py-3 rounded-xl transition-all duration-300">
+          كل الباقات
+        </button>
+        <button onclick="filterPackages('pathology')" class="category-btn snap-center text-sm font-bold px-5 py-3 rounded-xl transition-all duration-300 bg-white text-sapphire/80 border border-sapphire/10 shadow-sm hover:border-sapphire/30">
+          تحاليل أنسجة وباثولوجيا
+        </button>
+        <button onclick="filterPackages('chronic')" class="category-btn snap-center text-sm font-bold px-5 py-3 rounded-xl transition-all duration-300 bg-white text-sapphire/80 border border-sapphire/10 shadow-sm hover:border-sapphire/30">
+          كبار السن والأمراض المزمنة
+        </button>
+        <button onclick="filterPackages('general')" class="category-btn snap-center text-sm font-bold px-5 py-3 rounded-xl transition-all duration-300 bg-white text-sapphire/80 border border-sapphire/10 shadow-sm hover:border-sapphire/30">
+          الفحص الشامل والوقائي
+        </button>
+        <button onclick="filterPackages('kids')" class="category-btn snap-center text-sm font-bold px-5 py-3 rounded-xl transition-all duration-300 bg-white text-sapphire/80 border border-sapphire/10 shadow-sm hover:border-sapphire/30">
+          صحة الأطفال
+        </button>
+      </div>
+    </div>
+
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="packagesGrid">
       <!-- Package 1 -->
-      <div class="reveal bg-white rounded-3xl p-7 shadow-soft card-hover flex flex-col">
+      <div class="package-card reveal bg-white rounded-3xl p-7 shadow-soft card-hover flex flex-col" data-cat="kids">
         <span class="self-start text-[11px] font-bold text-ruby bg-ruby/10 px-3 py-1 rounded-full mb-4">للأطفال</span>
         <h3 class="text-xl font-extrabold text-sapphire mb-1">أبطال الأندلس</h3>
         <div class="flex items-baseline gap-3 mb-5">
@@ -415,7 +464,7 @@
       </div>
 
       <!-- Package 2 -->
-      <div class="reveal reveal-delay-1 bg-white rounded-3xl p-7 shadow-soft card-hover flex flex-col">
+      <div class="package-card reveal reveal-delay-1 bg-white rounded-3xl p-7 shadow-soft card-hover flex flex-col" data-cat="chronic">
         <span class="self-start text-[11px] font-bold text-ruby bg-ruby/10 px-3 py-1 rounded-full mb-4">لكبار السن</span>
         <h3 class="text-xl font-extrabold text-sapphire mb-1">البركة</h3>
         <div class="flex items-baseline gap-3 mb-5">
@@ -438,7 +487,7 @@
       </div>
 
       <!-- Package 3 - Featured -->
-      <div class="reveal reveal-delay-2 relative bg-sapphire rounded-3xl p-7 shadow-card card-hover flex flex-col overflow-hidden ring-2 ring-gold">
+      <div class="package-card reveal reveal-delay-2 relative bg-sapphire rounded-3xl p-7 shadow-card card-hover flex flex-col overflow-hidden ring-2 ring-gold" data-cat="general">
         <div class="absolute inset-0 zellige-bg-dark"></div>
         <span class="relative self-start text-[11px] font-bold text-sapphire-dark bg-gold px-3 py-1 rounded-full mb-4">الأكثر طلباً · فحص شامل</span>
         <h3 class="relative text-xl font-extrabold text-white mb-1">ميزان الصحة</h3>
@@ -462,30 +511,30 @@
       </div>
 
       <!-- Package 4 -->
-      <div class="reveal bg-white rounded-3xl p-7 shadow-soft card-hover flex flex-col">
-        <span class="self-start text-[11px] font-bold text-ruby bg-ruby/10 px-3 py-1 rounded-full mb-4">لمرضى الأنيميا</span>
-        <h3 class="text-xl font-extrabold text-sapphire mb-1">تحدي الأنيميا</h3>
+      <div class="package-card reveal bg-white rounded-3xl p-7 shadow-soft card-hover flex flex-col" data-cat="pathology">
+        <span class="self-start text-[11px] font-bold text-ruby bg-ruby/10 px-3 py-1 rounded-full mb-4">تحاليل الأنسجة والخلايا</span>
+        <h3 class="text-xl font-extrabold text-sapphire mb-1">فحص باثولوجي نسيجي</h3>
         <div class="flex items-baseline gap-3 mb-5">
-          <span class="text-3xl font-black text-sapphire">450<span class="text-sm font-bold"> ج.م</span></span>
-          <span class="price-strike text-sapphire/40 font-bold">800 ج.م</span>
+          <span class="text-3xl font-black text-sapphire">850<span class="text-sm font-bold"> ج.م</span></span>
+          <span class="price-strike text-sapphire/40 font-bold">1300 ج.م</span>
         </div>
         <details class="group mt-auto">
           <summary class="flex items-center justify-between text-sm font-bold text-sapphire/70 py-3 border-t border-sapphire/10">
-            عرض التحاليل المشمولة
+            عرض نوع الفحص المشمول
             <svg class="chevron w-4 h-4 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 9l6 6 6-6"/></svg>
           </summary>
           <div class="tests-panel"><div class="pt-2 pb-1 flex flex-wrap gap-2">
-            <span class="test-chip">صورة دم كاملة</span><span class="test-chip">مخزون الحديد</span><span class="test-chip">حديد بالدم</span><span class="test-chip">فيتامين ب12</span>
+            <span class="test-chip">تحليل عينات أنسجة Biopsy</span><span class="test-chip">فحص استشاري معهد الأورام</span><span class="test-chip">تقرير باثولوجي دقيق 100%</span>
           </div></div>
         </details>
-        <button onclick="bookPackage('تحدي الأنيميا', 450)" class="mt-4 w-full flex items-center justify-center gap-2 bg-sapphire hover:bg-sapphire-dark text-white font-bold py-3.5 rounded-xl transition-colors">
+        <button onclick="bookPackage('فحص باثولوجي نسيجي', 850)" class="mt-4 w-full flex items-center justify-center gap-2 bg-sapphire hover:bg-sapphire-dark text-white font-bold py-3.5 rounded-xl transition-colors">
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.42 1.26 4.86L2 22l5.34-1.31a9.9 9.9 0 0 0 4.7 1.19h.01c5.5 0 9.96-4.46 9.96-9.96 0-2.66-1.04-5.16-2.92-7.04A9.9 9.9 0 0 0 12.04 2Z"/></svg>
           احجز عبر واتساب
         </button>
       </div>
 
       <!-- Package 5 -->
-      <div class="reveal reveal-delay-1 bg-white rounded-3xl p-7 shadow-soft card-hover flex flex-col">
+      <div class="package-card reveal reveal-delay-1 bg-white rounded-3xl p-7 shadow-soft card-hover flex flex-col" data-cat="general">
         <span class="self-start text-[11px] font-bold text-ruby bg-ruby/10 px-3 py-1 rounded-full mb-4">لمتبعي الدايت</span>
         <h3 class="text-xl font-extrabold text-sapphire mb-1">مفاتيح الحرق</h3>
         <div class="flex items-baseline gap-3 mb-5">
@@ -508,12 +557,12 @@
       </div>
 
       <!-- Package 6 -->
-      <div class="reveal reveal-delay-2 bg-white rounded-3xl p-7 shadow-soft card-hover flex flex-col">
+      <div class="package-card reveal reveal-delay-2 bg-white rounded-3xl p-7 shadow-soft card-hover flex flex-col" data-cat="chronic">
         <span class="self-start text-[11px] font-bold text-ruby bg-ruby/10 px-3 py-1 rounded-full mb-4">لمرضى الضغط والقلب</span>
         <h3 class="text-xl font-extrabold text-sapphire mb-1">حارس القلب</h3>
         <div class="flex items-baseline gap-3 mb-5">
           <span class="text-3xl font-black text-sapphire">500<span class="text-sm font-bold"> ج.م</span></span>
-          <span class="price-strike text-sapphire/40 font-bold">800 ج.m</span>
+          <span class="price-strike text-sapphire/40 font-bold">800 ج.م</span>
         </div>
         <details class="group mt-auto">
           <summary class="flex items-center justify-between text-sm font-bold text-sapphire/70 py-3 border-t border-sapphire/10">
@@ -525,75 +574,6 @@
           </div></div>
         </details>
         <button onclick="bookPackage('حارس القلب', 500)" class="mt-4 w-full flex items-center justify-center gap-2 bg-sapphire hover:bg-sapphire-dark text-white font-bold py-3.5 rounded-xl transition-colors">
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.42 1.26 4.86L2 22l5.34-1.31a9.9 9.9 0 0 0 4.7 1.19h.01c5.5 0 9.96-4.46 9.96-9.96 0-2.66-1.04-5.16-2.92-7.04A9.9 9.9 0 0 0 12.04 2Z"/></svg>
-          احجز عبر واتساب
-        </button>
-      </div>
-
-      <!-- Package 7 -->
-      <div class="reveal bg-white rounded-3xl p-7 shadow-soft card-hover flex flex-col">
-        <span class="self-start text-[11px] font-bold text-ruby bg-ruby/10 px-3 py-1 rounded-full mb-4">لمشاكل الهضم</span>
-        <h3 class="text-xl font-extrabold text-sapphire mb-1">الهضم الآمن</h3>
-        <div class="flex items-baseline gap-3 mb-5">
-          <span class="text-3xl font-black text-sapphire">325<span class="text-sm font-bold"> ج.م</span></span>
-          <span class="price-strike text-sapphire/40 font-bold">550 ج.م</span>
-        </div>
-        <details class="group mt-auto">
-          <summary class="flex items-center justify-between text-sm font-bold text-sapphire/70 py-3 border-t border-sapphire/10">
-            عرض التحاليل المشمولة
-            <svg class="chevron w-4 h-4 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 9l6 6 6-6"/></svg>
-          </summary>
-          <div class="tests-panel"><div class="pt-2 pb-1 flex flex-wrap gap-2">
-            <span class="test-chip">جرثومة المعدة</span><span class="test-chip">تحليل براز كامل</span><span class="test-chip">دم خفي في البراز</span>
-          </div></div>
-        </details>
-        <button onclick="bookPackage('الهضم الآمن', 325)" class="mt-4 w-full flex items-center justify-center gap-2 bg-sapphire hover:bg-sapphire-dark text-white font-bold py-3.5 rounded-xl transition-colors">
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.42 1.26 4.86L2 22l5.34-1.31a9.9 9.9 0 0 0 4.7 1.19h.01c5.5 0 9.96-4.46 9.96-9.96 0-2.66-1.04-5.16-2.92-7.04A9.9 9.9 0 0 0 12.04 2Z"/></svg>
-          احجز عبر واتساب
-        </button>
-      </div>
-
-      <!-- Package 8 -->
-      <div class="reveal reveal-delay-1 bg-white rounded-3xl p-7 shadow-soft card-hover flex flex-col">
-        <span class="self-start text-[11px] font-bold text-ruby bg-ruby/10 px-3 py-1 rounded-full mb-4">للكلى والكبد</span>
-        <h3 class="text-xl font-extrabold text-sapphire mb-1">الفلتر النقي</h3>
-        <div class="flex items-baseline gap-3 mb-5">
-          <span class="text-3xl font-black text-sapphire">650<span class="text-sm font-bold"> ج.م</span></span>
-          <span class="price-strike text-sapphire/40 font-bold">950 ج.م</span>
-        </div>
-        <details class="group mt-auto">
-          <summary class="flex items-center justify-between text-sm font-bold text-sapphire/70 py-3 border-t border-sapphire/10">
-            عرض التحاليل المشمولة
-            <svg class="chevron w-4 h-4 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 9l6 6 6-6"/></svg>
-          </summary>
-          <div class="tests-panel"><div class="pt-2 pb-1 flex flex-wrap gap-2">
-            <span class="test-chip">وظائف كبد وكلى كاملة</span><span class="test-chip">إنزيمات الكبد</span><span class="test-chip">بولينا وكرياتينين</span>
-          </div></div>
-        </details>
-        <button onclick="bookPackage('الفلتر النقي', 650)" class="mt-4 w-full flex items-center justify-center gap-2 bg-sapphire hover:bg-sapphire-dark text-white font-bold py-3.5 rounded-xl transition-colors">
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.42 1.26 4.86L2 22l5.34-1.31a9.9 9.9 0 0 0 4.7 1.19h.01c5.5 0 9.96-4.46 9.96-9.96 0-2.66-1.04-5.16-2.92-7.04A9.9 9.9 0 0 0 12.04 2Z"/></svg>
-          احجز عبر واتساب
-        </button>
-      </div>
-
-      <!-- Package 9 -->
-      <div class="reveal reveal-delay-2 bg-white rounded-3xl p-7 shadow-soft card-hover flex flex-col">
-        <span class="self-start text-[11px] font-bold text-ruby bg-ruby/10 px-3 py-1 rounded-full mb-4">لآلام العظام</span>
-        <h3 class="text-xl font-extrabold text-sapphire mb-1">العظام والمفاصل</h3>
-        <div class="flex items-baseline gap-3 mb-5">
-          <span class="text-3xl font-black text-sapphire">499<span class="text-sm font-bold"> ج.م</span></span>
-          <span class="price-strike text-sapphire/40 font-bold">800 ج.م</span>
-        </div>
-        <details class="group mt-auto">
-          <summary class="flex items-center justify-between text-sm font-bold text-sapphire/70 py-3 border-t border-sapphire/10">
-            عرض التحاليل المشمولة
-            <svg class="chevron w-4 h-4 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 9l6 6 6-6"/></svg>
-          </summary>
-          <div class="tests-panel"><div class="pt-2 pb-1 flex flex-wrap gap-2">
-            <span class="test-chip">كالسيوم</span><span class="test-chip">فيتامين د</span><span class="test-chip">سرعة ترسيب</span><span class="test-chip">معامل روماتويد</span><span class="test-chip">يوريك أسيد</span>
-          </div></div>
-        </details>
-        <button onclick="bookPackage('العظام والمفاصل', 499)" class="mt-4 w-full flex items-center justify-center gap-2 bg-sapphire hover:bg-sapphire-dark text-white font-bold py-3.5 rounded-xl transition-colors">
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.42 1.26 4.86L2 22l5.34-1.31a9.9 9.9 0 0 0 4.7 1.19h.01c5.5 0 9.96-4.46 9.96-9.96 0-2.66-1.04-5.16-2.92-7.04A9.9 9.9 0 0 0 12.04 2Z"/></svg>
           احجز عبر واتساب
         </button>
@@ -696,7 +676,7 @@
         <h4 class="text-white font-extrabold mb-5">موقعنا</h4>
         <div class="rounded-2xl overflow-hidden border border-white/10 aspect-video">
           <iframe
-            src="https://www.google.com/maps?q=%D8%B3%D8%ABR%D8%A8%D8%A7%D9%8A&output=embed"
+            src="https://www.google.com/maps?q=%D8%B3%D8%A8%D8%B1%D8%A8%D8%A7%D9%89&output=embed"
             class="w-full h-full grayscale contrast-125 opacity-80"
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
@@ -731,6 +711,35 @@
     openWhatsApp(message);
   }
 
+  // دالة طلب الزيارة المنزلية التفاعلية مع القائمة المنسدلة الجديدة
+  function requestHomeVisitWithService() {
+    const selectEl = document.getElementById('homeDropList');
+    const selectedService = selectEl.value;
+    let message = 'مرحباً، أرغب في طلب خدمة السحب المنزلي من معمل الأندلس.';
+    if (selectedService) {
+      message = `مرحباً، أرغب في طلب خدمة السحب المنزلي من معمل الأندلس لعمل: (${selectedService}).`;
+    }
+    openWhatsApp(message);
+  }
+
+  // دالة فلترة الباقات طبقا لتصنيفات شريط الموبايل واللابتوب الجديد
+  function filterPackages(category) {
+    const buttons = document.querySelectorAll('.category-btn');
+    buttons.forEach(btn => {
+      btn.classList.remove('active-cat');
+    });
+    event.currentTarget.classList.add('active-cat');
+
+    const cards = document.querySelectorAll('.package-card');
+    cards.forEach(card => {
+      if (category === 'all' || card.getAttribute('data-cat') === category) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
   // ===== Scroll reveal =====
   const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries) => {
@@ -743,7 +752,7 @@
   }, { threshold: 0.12 });
   revealEls.forEach(el => io.observe(el));
 
-  // ===== FAQ Accordion (only one open at a time) =====
+  // ===== FAQ Accordion =====
   const faqItems = document.querySelectorAll('.faq-item');
   faqItems.forEach(item => {
     const trigger = item.querySelector('.faq-trigger');
