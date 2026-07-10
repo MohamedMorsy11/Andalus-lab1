@@ -55,7 +55,10 @@
   .reveal-delay-3{ transition-delay:.24s; }
   .reveal-delay-4{ transition-delay:.32s; }
 
-  .arch-frame{ clip-path: path('M0,340 C0,150 60,0 250,0 C440,0 500,150 500,340 L500,420 L0,420 Z'); }
+  /* Enhanced Arch Frame Mask using CSS clip-path for true responsive wrapping */
+  .hero-arch-mask {
+    clip-path: url(#heroArchPath);
+  }
 
   ::-webkit-scrollbar{ width:10px; }
   ::-webkit-scrollbar-track{ background:#EEF1F6; }
@@ -95,6 +98,15 @@
 </head>
 <body class="antialiased overflow-x-hidden">
 
+<!-- SVG Definitive Path for Arch Masking (Allows perfect resizing) -->
+<svg class="absolute w-0 h-0" width="0" height="0">
+  <defs>
+    <clipPath id="heroArchPath" clipPathUnits="objectBoundingBox">
+      <path d="M 0.02,1 C 0.02,0.41 0.2,0.04 0.5,0.04 C 0.8,0.04 0.98,0.41 0.98,1 Z"/>
+    </clipPath>
+  </defs>
+</svg>
+
 <!-- ============ NAV ============ -->
 <header class="sticky top-0 z-40 bg-ivory/85 backdrop-blur-md border-b border-sapphire/10">
   <div class="max-w-7xl mx-auto px-5 md:px-8 h-20 flex items-center justify-between">
@@ -131,17 +143,19 @@
         <span class="block text-ruby mt-2">لأن صحتك تستحق الأفضل</span>
       </h1>
       <p class="text-sapphire/70 text-lg leading-relaxed max-w-xl mb-9">
-        معمل الأندلس يضمن لك نتائج دقيقة وسريعة تحت إشراف نخبة من الأطباء المتخصصين في معهد الأورام بطنطا.
+        معمل الأندلس يضمن لك نتائج دقيقة وسريعة تحت إشراف نخبة من الأطباء المتخصصين في معهد الأورام بطنطا، بأحدث التقنيات المعملية العالمية.
       </p>
-      <div class="flex flex-wrap items-center gap-4">
-        <button onclick="openWhatsApp('مرحباً، أرغب في حجز موعد لعمل تحليل في معمل الأندلس.')" class="group flex items-center gap-3 bg-ruby hover:bg-ruby-dark text-white font-bold px-7 py-4 rounded-2xl shadow-card transition-all hover:-translate-y-1">
+      
+      <!-- الأزرار المحدثة مع تفعيل إرسال الروشتة -->
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+        <button onclick="openWhatsApp('مرحباً، أرغب في حجز موعد لعمل تحليل في معمل الأندلس.')" class="group flex items-center justify-center gap-3 bg-ruby hover:bg-ruby-dark text-white font-bold px-7 py-4 rounded-2xl shadow-card transition-all hover:-translate-y-1">
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.42 1.26 4.86L2 22l5.34-1.31a9.9 9.9 0 0 0 4.7 1.19h.01c5.5 0 9.96-4.46 9.96-9.96 0-2.66-1.04-5.16-2.92-7.04A9.9 9.9 0 0 0 12.04 2Z"/></svg>
           حجز موعد عبر الواتساب
         </button>
-        <a href="#packages" class="flex items-center gap-2 text-sapphire font-bold px-6 py-4 rounded-2xl border-2 border-sapphire/15 hover:border-sapphire/40 transition-colors">
-          عرض الباقات المخفضة
-          <svg class="w-4 h-4 rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
+        <button onclick="openWhatsApp('مرحباً، أود إرسال صورة الروشتة للاستفسار عن أسعار التحاليل المطلوبة وتجهيزاتها.')" class="flex items-center justify-center gap-3 text-sapphire bg-white font-bold px-6 py-4 rounded-2xl border-2 border-sapphire/15 hover:border-sapphire/40 shadow-soft transition-all hover:-translate-y-1">
+          <svg class="w-5 h-5 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" /></svg>
+          إرسال صورة الروشتة الطبية
+        </button>
       </div>
 
       <div class="flex items-center gap-8 mt-12 pt-8 border-t border-sapphire/10">
@@ -162,44 +176,42 @@
       </div>
     </div>
 
+    <!-- قسم صورة القوس الأندلسي المطور بصورة طبية حقيقية احترافية -->
     <div class="order-1 lg:order-2 relative reveal reveal-delay-2">
-      <div class="relative w-full max-w-md mx-auto aspect-[500/460]">
-        <!-- Andalusian horseshoe-arch frame -->
-        <svg viewBox="0 0 500 460" class="w-full h-full">
-          <defs>
-            <linearGradient id="archGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#123464"/>
-              <stop offset="100%" stop-color="#0B2545"/>
-            </linearGradient>
-          </defs>
-          <path d="M10,440 C10,180 90,20 250,20 C410,20 490,180 490,440 Z" fill="url(#archGrad)"/>
-          <path d="M40,440 C40,200 105,55 250,55 C395,55 460,200 460,440 Z" fill="none" stroke="#C9A227" stroke-width="2" opacity="0.65"/>
-          <path d="M70,440 C70,225 122,90 250,90 C378,90 430,225 430,440 Z" fill="none" stroke="#C9A227" stroke-width="1" opacity="0.35"/>
+      <div class="relative w-full max-w-md mx-auto aspect-[500/520]">
+        
+        <!-- إطار القوس الأندلسي الخارجي -->
+        <div class="absolute inset-0 bg-gradient-to-b from-sapphire-light to-sapphire rounded-t-full p-[3px] shadow-card">
+          <div class="w-full h-full bg-ivory rounded-t-full overflow-hidden hero-arch-mask relative">
+            
+            <!-- الصورة الطبية الحقيقية المدمجة بفلتر ألوان متناسق مع الموقع -->
+            <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&q=80&w=600" 
+                 alt="التحاليل الطبية والباثولوجية بمعمل الأندلس" 
+                 class="w-full h-full object-cover contrast-115 brightness-95 mix-blend-multiply opacity-90 scale-105 hover:scale-100 transition-transform duration-700 ease-out" />
+            
+            <!-- طبقة تظليل ناعمة لعمق التصميم -->
+            <div class="absolute inset-0 bg-gradient-to-t from-sapphire-dark/60 via-transparent to-transparent"></div>
+          </div>
+        </div>
+
+        <!-- الخطوط الزخرفية الأندلسية الداخلية الذهبية المحيطة بالصورة -->
+        <svg viewBox="0 0 500 520" class="absolute inset-0 w-full h-full pointer-events-none">
+          <path d="M25,510 C25,230 95,35 250,35 C405,35 475,230 475,510" fill="none" stroke="#C9A227" stroke-width="2.5" opacity="0.75"/>
+          <path d="M50,510 C50,260 115,70 250,70 C385,70 450,260 450,510" fill="none" stroke="#C9A227" stroke-width="1" opacity="0.4"/>
         </svg>
 
-        <!-- inner medical line-art -->
-        <svg viewBox="0 0 200 200" class="absolute left-1/2 top-[38%] -translate-x-1/2 -translate-y-1/2 w-40 h-40 opacity-90">
-          <g fill="none" stroke="#E4C567" stroke-width="3" stroke-linecap="round">
-            <path d="M60 30 C60 60 140 60 140 90 C140 120 60 120 60 150"/>
-            <circle cx="60" cy="30" r="5" fill="#E4C567"/>
-            <circle cx="140" cy="90" r="5" fill="#E4C567"/>
-            <circle cx="60" cy="150" r="5" fill="#E4C567"/>
-            <path d="M75 45 L125 75 M75 60 L125 90 M75 120 L125 105 M75 135 L125 120" opacity="0.6"/>
-          </g>
-        </svg>
-
-        <!-- floating glass badges -->
-        <div class="float-anim absolute -right-3 top-6 bg-white/90 backdrop-blur-md rounded-2xl shadow-card px-4 py-3 flex items-center gap-3 border border-white/60">
+        <!-- البادجات الزجاجية العائمة (تفاعلية وحيوية) -->
+        <div class="float-anim absolute -right-3 top-10 bg-white/95 backdrop-blur-md rounded-2xl shadow-card px-4 py-3 flex items-center gap-3 border border-white/60 z-10">
           <div class="w-9 h-9 rounded-xl bg-ruby/10 flex items-center justify-center shrink-0">
             <svg class="w-5 h-5 text-ruby" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>
           </div>
           <div>
             <p class="text-xs font-bold text-sapphire">دقة 99.9%</p>
-            <p class="text-[10px] text-sapphire/50">أجهزة حديثة</p>
+            <p class="text-[10px] text-sapphire/50">أجهزة إلكترونية حديثة</p>
           </div>
         </div>
 
-        <div class="float-anim-slow absolute -left-4 bottom-16 bg-white/90 backdrop-blur-md rounded-2xl shadow-card px-4 py-3 flex items-center gap-3 border border-white/60">
+        <div class="float-anim-slow absolute -left-4 bottom-20 bg-white/95 backdrop-blur-md rounded-2xl shadow-card px-4 py-3 flex items-center gap-3 border border-white/60 z-10">
           <div class="w-9 h-9 rounded-xl bg-sapphire/10 flex items-center justify-center shrink-0">
             <svg class="w-5 h-5 text-sapphire" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l4-4 4 4 6-8 4 4"/></svg>
           </div>
@@ -209,8 +221,9 @@
           </div>
         </div>
 
-        <div class="absolute left-1/2 -translate-x-1/2 bottom-0 bg-white rounded-2xl shadow-card px-5 py-3 border border-sapphire/5">
-          <p class="text-xs font-bold text-sapphire whitespace-nowrap">د. ريم علي درويش · استشاري تحاليل انسجه </p>
+        <div class="absolute left-1/2 -translate-x-1/2 bottom-0 bg-white rounded-2xl shadow-card px-6 py-3.5 border border-sapphire/5 whitespace-nowrap text-center z-10">
+          <p class="text-sm font-black text-sapphire">د. ريم علي درويش</p>
+          <p class="text-[11px] text-ruby font-bold mt-0.5">استشاري تحاليل الأنسجة والخلايا بمعهد الأورام</p>
         </div>
       </div>
     </div>
@@ -238,7 +251,7 @@
       <p class="relative text-gold text-sm font-bold mt-8">اطمئنان يبدأ من الخبرة</p>
     </div>
 
-    <!-- كارت 4: سحب من المنزل (متناسق بجانبه على اللابتوب ويظهر ثانياً في الموبايل) -->
+    <!-- كارت 4: سحب من المنزل -->
     <div class="reveal reveal-delay-3 order-2 md:order-none md:col-span-2 bg-gradient-to-l from-ruby to-ruby-light rounded-3xl p-7 flex items-center gap-5 shadow-soft card-hover">
       <div class="w-14 h-14 rounded-2xl bg-white/15 flex items-center justify-center shrink-0">
         <svg class="w-7 h-7 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>
@@ -341,7 +354,7 @@
       </h2>
       <div class="text-sapphire/70 leading-loose text-lg space-y-5">
         <p><span class="float-right text-6xl font-black text-ruby leading-none ml-3 mt-1">تأ</span>سس معمل الأندلس في عام 2023 على يد نخبة من المتخصصين في التحاليل الإكلينيكية والباثولوجية، بقيادة د. ريم علي درويش، استشاري تحاليل الأنسجة والخلايا بمعهد الأورام بطنطا، بهدف تقديم خدمة تشخيصية تليق بثقة المرضى والأطباء على حد سواء.</p>
-        <p>نؤمن بأن التميز في التحاليل الباثولوجية ليس رفاهية, بل ضرورة تبني عليها القرارات العلاجية الأهم في حياة المريض. لذلك حرصنا منذ اليوم الأول على الجمع بين أحدث الأجهزة المعملية وخبرة استشارية متخصصة، في بيئة تحترم وقت وراحة كل من يثق بنا.</p>
+        <p>نؤمن بأن التميز في التحاليل الباثولوجية ليس رفاهية، بل ضرورة تبني عليها القرارات العلاجية الأهم في حياة المريض. لذلك حرصنا منذ اليوم الأول على الجمع بين أحدث الأجهزة المعملية وخبرة استشارية متخصصة، في بيئة تحترم وقت وراحة كل من يثق بنا.</p>
       </div>
       <div class="grid sm:grid-cols-2 gap-4 mt-10">
         <div class="flex items-center gap-3 bg-white rounded-2xl p-5 shadow-soft">
@@ -500,7 +513,7 @@
         <h3 class="text-xl font-extrabold text-sapphire mb-1">حارس القلب</h3>
         <div class="flex items-baseline gap-3 mb-5">
           <span class="text-3xl font-black text-sapphire">500<span class="text-sm font-bold"> ج.م</span></span>
-          <span class="price-strike text-sapphire/40 font-bold">800 ج.م</span>
+          <span class="price-strike text-sapphire/40 font-bold">800 ج.m</span>
         </div>
         <details class="group mt-auto">
           <summary class="flex items-center justify-between text-sm font-bold text-sapphire/70 py-3 border-t border-sapphire/10">
@@ -683,7 +696,7 @@
         <h4 class="text-white font-extrabold mb-5">موقعنا</h4>
         <div class="rounded-2xl overflow-hidden border border-white/10 aspect-video">
           <iframe
-            src="https://www.google.com/maps?q=%D8%B3%D8%A8%D8%B1%D8%A8%D8%A7%D9%89&output=embed"
+            src="https://www.google.com/maps?q=%D8%B3%D8%ABR%D8%A8%D8%A7%D9%8A&output=embed"
             class="w-full h-full grayscale contrast-125 opacity-80"
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
