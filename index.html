@@ -11,7 +11,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght=300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
   tailwind.config = {
@@ -226,7 +226,7 @@
 
   <div class="grid md:grid-cols-4 gap-5">
     <!-- كارت 1: إشراف طبي متخصص -->
-    <div class="reveal order-1 md:col-span-2 md:row-span-2 bg-sapphire rounded-3xl p-8 flex flex-col justify-between relative overflow-hidden card-hover">
+    <div class="reveal order-1 md:col-span-2 bg-sapphire rounded-3xl p-8 flex flex-col justify-between relative overflow-hidden card-hover">
       <div class="absolute inset-0 zellige-bg-dark"></div>
       <div class="relative">
         <div class="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center mb-6">
@@ -238,25 +238,7 @@
       <p class="relative text-gold text-sm font-bold mt-8">اطمئنان يبدأ من الخبرة</p>
     </div>
 
-    <!-- كارت 2: نتائج عالية الدقة -->
-    <div class="reveal reveal-delay-1 order-3 md:order-none bg-white rounded-3xl p-7 shadow-soft card-hover">
-      <div class="w-12 h-12 rounded-xl bg-ruby/10 flex items-center justify-center mb-5">
-        <svg class="w-6 h-6 text-ruby" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M3 12c1.5-4 5-6 9-6s7.5 2 9 6c-1.5 4-5 6-9 6s-7.5-2-9-6z"/></svg>
-      </div>
-      <h3 class="font-extrabold text-sapphire text-lg mb-2">نتائج عالية الدقة</h3>
-      <p class="text-sapphire/60 text-sm leading-relaxed">أحدث الأجهزة المعملية المعتمدة عالمياً لنتائج تعتمد عليها.</p>
-    </div>
-
-    <!-- كارت 3: استلام عبر الواتساب -->
-    <div class="reveal reveal-delay-2 order-4 md:order-none bg-white rounded-3xl p-7 shadow-soft card-hover">
-      <div class="w-12 h-12 rounded-xl bg-sapphire/10 flex items-center justify-center mb-5">
-        <svg class="w-6 h-6 text-sapphire" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4l16 8-16 8V4z"/></svg>
-      </div>
-      <h3 class="font-extrabold text-sapphire text-lg mb-2">استلام عبر الواتساب</h3>
-      <p class="text-sapphire/60 text-sm leading-relaxed">تصلك نتيجتك بصيغة PDF مباشرة على واتسابك فور اعتمادها.</p>
-    </div>
-
-    <!-- كارت 4: سحب من المنزل (يظهر ثانياً في الموبايل بفضل order-2) -->
+    <!-- كارت 4: سحب من المنزل (متناسق بجانبه على اللابتوب ويظهر ثانياً في الموبايل) -->
     <div class="reveal reveal-delay-3 order-2 md:order-none md:col-span-2 bg-gradient-to-l from-ruby to-ruby-light rounded-3xl p-7 flex items-center gap-5 shadow-soft card-hover">
       <div class="w-14 h-14 rounded-2xl bg-white/15 flex items-center justify-center shrink-0">
         <svg class="w-7 h-7 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>
@@ -264,6 +246,28 @@
       <div>
         <h3 class="font-extrabold text-white text-lg mb-1">سحب من المنزل</h3>
         <p class="text-white/80 text-sm leading-relaxed">راحة تامة، فريقنا يصل إليك في أي وقت يناسبك دون عناء.</p>
+      </div>
+    </div>
+
+    <!-- كارت 2: نتائج عالية الدقة -->
+    <div class="reveal reveal-delay-1 order-3 md:order-none bg-white rounded-3xl p-7 shadow-soft card-hover flex flex-col justify-between">
+      <div>
+        <div class="w-12 h-12 rounded-xl bg-ruby/10 flex items-center justify-center mb-5">
+          <svg class="w-6 h-6 text-ruby" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M3 12c1.5-4 5-6 9-6s7.5 2 9 6c-1.5 4-5 6-9 6s-7.5-2-9-6z"/></svg>
+        </div>
+        <h3 class="font-extrabold text-sapphire text-lg mb-2">نتائج عالية الدقة</h3>
+        <p class="text-sapphire/60 text-sm leading-relaxed">أحدث الأجهزة المعملية المعتمدة عالمياً لنتائج تعتمد عليها.</p>
+      </div>
+    </div>
+
+    <!-- كارت 3: استلام عبر الواتساب -->
+    <div class="reveal reveal-delay-2 order-4 md:order-none bg-white rounded-3xl p-7 shadow-soft card-hover flex flex-col justify-between">
+      <div>
+        <div class="w-12 h-12 rounded-xl bg-sapphire/10 flex items-center justify-center mb-5">
+          <svg class="w-6 h-6 text-sapphire" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4l16 8-16 8V4z"/></svg>
+        </div>
+        <h3 class="font-extrabold text-sapphire text-lg mb-2">استلام عبر الواتساب</h3>
+        <p class="text-sapphire/60 text-sm leading-relaxed">تصلك نتيجتك بصيغة PDF مباشرة على واتسابك فور اعتمادها.</p>
       </div>
     </div>
   </div>
@@ -337,7 +341,7 @@
       </h2>
       <div class="text-sapphire/70 leading-loose text-lg space-y-5">
         <p><span class="float-right text-6xl font-black text-ruby leading-none ml-3 mt-1">تأ</span>سس معمل الأندلس في عام 2023 على يد نخبة من المتخصصين في التحاليل الإكلينيكية والباثولوجية، بقيادة د. ريم علي درويش، استشاري تحاليل الأنسجة والخلايا بمعهد الأورام بطنطا، بهدف تقديم خدمة تشخيصية تليق بثقة المرضى والأطباء على حد سواء.</p>
-        <p>نؤمن بأن التميز في التحاليل الباثولوجية ليس رفاهية، بل ضرورة تبني عليها القرارات العلاجية الأهم في حياة المريض. لذلك حرصنا منذ اليوم الأول على الجمع بين أحدث الأجهزة المعملية وخبرة استشارية متخصصة، في بيئة تحترم وقت وراحة كل من يثق بنا.</p>
+        <p>نؤمن بأن التميز في التحاليل الباثولوجية ليس رفاهية, بل ضرورة تبني عليها القرارات العلاجية الأهم في حياة المريض. لذلك حرصنا منذ اليوم الأول على الجمع بين أحدث الأجهزة المعملية وخبرة استشارية متخصصة، في بيئة تحترم وقت وراحة كل من يثق بنا.</p>
       </div>
       <div class="grid sm:grid-cols-2 gap-4 mt-10">
         <div class="flex items-center gap-3 bg-white rounded-2xl p-5 shadow-soft">
