@@ -189,7 +189,6 @@
 </div>
 
 <!-- ============ HERO ============ -->
-<!-- تم تقليل pb-24 إلى pb-12 لإنهاء الفراغ الكبير السفلـي على اللابتوب -->
 <section class="relative overflow-hidden">
   <div class="absolute inset-0 zellige-bg opacity-40 pointer-events-none"></div>
   <div class="max-w-7xl mx-auto px-5 md:px-8 pt-14 md:pt-20 pb-12 grid lg:grid-cols-2 gap-14 items-center relative">
@@ -236,14 +235,17 @@
       </div>
     </div>
 
-    <!-- قسم صورة المختبر 4K - تم تحويل الارتفاع ليكون ديناميكياً متجاوباً لمنع الفراغات -->
+    <!-- قسم صورة القوس الأندلسي المستقرة والمحفوظة محلياً 4K لضمان أقصى نقاء وسرعة -->
     <div class="order-1 lg:order-2 relative reveal reveal-delay-2">
       <div class="relative w-full max-w-md mx-auto aspect-square lg:aspect-[500/510]">
         
         <!-- إطار القوس الأندلسي الخارجي -->
         <div class="absolute inset-0 bg-gradient-to-b from-sapphire-light to-sapphire rounded-t-full p-[3px] shadow-card">
           <div class="w-full h-full bg-slate2 rounded-t-full overflow-hidden hero-arch-mask relative">
-            <img src="hero-lab.jpg" alt="مختبر معمل الأندلس الحديث والأجهزة المتطورة" class="w-full h-full object-cover contrast-105 brightness-100 scale-102 hover:scale-100 transition-transform duration-700 ease-out" />
+            <!-- استدعاء ملف الصورة المحلي hero-lab.jpg بدقة الـ 4K الأصلية الصافية -->
+            <img src="hero-lab.jpg" 
+                 alt="مختبر معمل الأندلس الحديث والأجهزة المتطورة" 
+                 class="w-full h-full object-cover contrast-105 brightness-100 scale-102 hover:scale-100 transition-transform duration-700 ease-out" />
             <div class="absolute inset-0 bg-gradient-to-t from-sapphire-dark/40 via-transparent to-transparent"></div>
           </div>
         </div>
@@ -254,7 +256,7 @@
           <path d="M50,510 C50,260 115,70 250,70 C385,70 450,260 450,510" fill="none" stroke="#C9A227" stroke-width="1" opacity="0.4"/>
         </svg>
 
-        <!-- البادجات الزجاجية العائمة - تم استخدام md:flex لإخفائها تماماً على الموبايل لمنع الازدحام -->
+        <!-- البادجات الزجاجية العائمة (مخفية بالكامل في الموبايل وتظهر في اللابتوب لحماية الصورة) -->
         <div class="float-anim absolute -right-3 top-10 bg-white/95 backdrop-blur-md rounded-2xl shadow-card px-4 py-3 hidden md:flex items-center gap-3 border border-white/60 z-10">
           <div class="w-9 h-9 rounded-xl bg-ruby/10 flex items-center justify-center shrink-0">
             <svg class="w-5 h-5 text-ruby" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>
@@ -275,13 +277,14 @@
           </div>
         </div>
 
-        <!-- الكارت السفلي الخاص باسم الدكتورة مصغر ومنسق بشكل كامل للموبايل والكمبيوتر -->
+        <!-- كارت اسم الدكتورة ريم المنسق -->
         <div class="absolute left-1/2 -translate-x-1/2 bottom-0 bg-white rounded-2xl shadow-card px-4 py-2.5 sm:px-6 sm:py-3.5 border border-sapphire/5 whitespace-nowrap text-center z-10 max-w-[90vw]">
           <p class="text-xs sm:text-sm font-black text-sapphire">د. ريم علي درويش</p>
           <p class="text-[9px] sm:text-[11px] text-ruby font-bold mt-0.5">استشاري تحاليل الأنسجة والخلايا بمعهد الأورام</p>
         </div>
       </div>
     </div>
+
   </div>
 </section>
 
