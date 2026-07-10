@@ -210,7 +210,7 @@
         </div>
 
         <div class="absolute left-1/2 -translate-x-1/2 bottom-0 bg-white rounded-2xl shadow-card px-5 py-3 border border-sapphire/5">
-          <p class="text-xs font-bold text-sapphire whitespace-nowrap">د. ريم علي درويش · استشاري أنسجة وخلايا</p>
+          <p class="text-xs font-bold text-sapphire whitespace-nowrap">د. ريم علي درويش · استشاري تحاليل انسجه </p>
         </div>
       </div>
     </div>
@@ -225,7 +225,8 @@
   </div>
 
   <div class="grid md:grid-cols-4 gap-5">
-    <div class="reveal md:col-span-2 md:row-span-2 bg-sapphire rounded-3xl p-8 flex flex-col justify-between relative overflow-hidden card-hover">
+    <!-- كارت 1: إشراف طبي متخصص -->
+    <div class="reveal order-1 md:col-span-2 md:row-span-2 bg-sapphire rounded-3xl p-8 flex flex-col justify-between relative overflow-hidden card-hover">
       <div class="absolute inset-0 zellige-bg-dark"></div>
       <div class="relative">
         <div class="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center mb-6">
@@ -237,7 +238,8 @@
       <p class="relative text-gold text-sm font-bold mt-8">اطمئنان يبدأ من الخبرة</p>
     </div>
 
-    <div class="reveal reveal-delay-1 bg-white rounded-3xl p-7 shadow-soft card-hover">
+    <!-- كارت 2: نتائج عالية الدقة -->
+    <div class="reveal reveal-delay-1 order-3 md:order-none bg-white rounded-3xl p-7 shadow-soft card-hover">
       <div class="w-12 h-12 rounded-xl bg-ruby/10 flex items-center justify-center mb-5">
         <svg class="w-6 h-6 text-ruby" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M3 12c1.5-4 5-6 9-6s7.5 2 9 6c-1.5 4-5 6-9 6s-7.5-2-9-6z"/></svg>
       </div>
@@ -245,7 +247,8 @@
       <p class="text-sapphire/60 text-sm leading-relaxed">أحدث الأجهزة المعملية المعتمدة عالمياً لنتائج تعتمد عليها.</p>
     </div>
 
-    <div class="reveal reveal-delay-2 bg-white rounded-3xl p-7 shadow-soft card-hover">
+    <!-- كارت 3: استلام عبر الواتساب -->
+    <div class="reveal reveal-delay-2 order-4 md:order-none bg-white rounded-3xl p-7 shadow-soft card-hover">
       <div class="w-12 h-12 rounded-xl bg-sapphire/10 flex items-center justify-center mb-5">
         <svg class="w-6 h-6 text-sapphire" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4l16 8-16 8V4z"/></svg>
       </div>
@@ -253,7 +256,8 @@
       <p class="text-sapphire/60 text-sm leading-relaxed">تصلك نتيجتك بصيغة PDF مباشرة على واتسابك فور اعتمادها.</p>
     </div>
 
-    <div class="reveal reveal-delay-3 md:col-span-2 bg-gradient-to-l from-ruby to-ruby-light rounded-3xl p-7 flex items-center gap-5 shadow-soft card-hover">
+    <!-- كارت 4: سحب من المنزل (يظهر ثانياً في الموبايل بفضل order-2) -->
+    <div class="reveal reveal-delay-3 order-2 md:order-none md:col-span-2 bg-gradient-to-l from-ruby to-ruby-light rounded-3xl p-7 flex items-center gap-5 shadow-soft card-hover">
       <div class="w-14 h-14 rounded-2xl bg-white/15 flex items-center justify-center shrink-0">
         <svg class="w-7 h-7 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>
       </div>
